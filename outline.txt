@@ -1,0 +1,20 @@
+Employment Data: ok
+https://www.labormarketinfo.edd.ca.gov/cgi/dataanalysis/labForceReport.asp?menuchoice=LABFORCE
+
+Population: ok
+http://worldpopulationreview.com/us-counties/ca/los-angeles-county-population/
+
+Rental Median Monthly Price: ok
+https://www.zillow.com/research/data/
+
+Median Home Price ok
+https://www.zillow.com/research/data/
+
+Total Available Homes: ok
+https://www.zillow.com/research/data/
+
+Median Household Income: ok
+https://www.deptofnumbers.com/income/california/los-angeles-county/
+
+
+
