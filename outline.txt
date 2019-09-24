@@ -4,7 +4,7 @@ https://www.labormarketinfo.edd.ca.gov/cgi/dataanalysis/labForceReport.asp?menuc
 Population: ok
 http://worldpopulationreview.com/us-counties/ca/los-angeles-county-population/
 
-Rental Median Monthly Price: ok
+Rental Median Monthly Price: ok ZRI Single Family Home
 https://www.zillow.com/research/data/
 
 Median Home Price ok
@@ -17,4 +17,8 @@ Median Household Income: ok
 https://www.deptofnumbers.com/income/california/los-angeles-county/
 
 
-
+Webpage:
+Landing/Overview
+Home and Rental Price/Value w/ a viz for each. scatter w/ lines
+Median Income Viz - horizontal bar chart and multi line dual axis scatter line chart
+Conclusion w/ map
