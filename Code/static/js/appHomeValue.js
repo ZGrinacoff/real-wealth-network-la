@@ -110,11 +110,11 @@
 // set the dimensions and margins of the graph
 var margin = {
     top: 20,
-    right: 20,
+    right: 60,
     bottom: 30,
     left: 60
 },
-width = 1700 - margin.left - margin.right,
+width = 1500 - margin.left - margin.right,
 height = 500 - margin.top - margin.bottom;
 
 // set the ranges
@@ -165,7 +165,7 @@ var parseTime = d3.timeParse("%Y-%m");
 
 // Get the data
 var datalist = [];
-d3.csv("../data/home_rentalPrice.csv", function (error, data) {
+d3.csv("../../data/home_rentalPrice.csv", function (error, data) {
     if (error) throw error;
 
     data = data.filter(function(row) {
