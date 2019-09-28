@@ -152,7 +152,7 @@ var chartGroup = svg.append("g")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Load data from "medianIncome.csv".
-d3.csv("../data/medianIncome.csv", function(error, incomeData) {
+d3.csv("../../data/medianIncome.csv", function(error, incomeData) {
     if (error) throw error;
     
     console.log(incomeData);
