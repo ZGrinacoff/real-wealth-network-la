@@ -1,0 +1,64 @@
+/* .line {
+    fill: none;
+    stroke-width: 2px;
+  }
+  
+  .red {
+    stroke: red;
+  }
+  
+  .green {
+    stroke: green;
+  } */
+
+  .axis {
+    font: 12px sans-serif;
+  }
+
+  .line {
+    fill: none;
+    /*stroke: #aaa;
+    stroke: #43484c;
+    stroke: #405275;
+    stroke: rgba(40, 53, 79, .95);
+    stroke: #161719;
+    stroke: #f99e1a;*/
+    stroke: #f89e35;
+    stroke-width: 15px;
+}
+
+.line2 {
+    fill: none;
+    stroke: #aaa;
+    stroke-width: 15px;
+}
+
+.line2-text {
+    fill: #aaa;
+    stroke: #aaa;
+}
+
+.line-text {
+    fill: #f89e35;
+    stroke: #f89e35;
+}
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    background: #f99e1a;
+    border: 0px;
+    border-radius: 8px;
+}
+
+.tooltip p {
+    margin: 0;
+    padding: 0;
+}
+
+circle {
+    fill: rgba(77, 96, 133, 0.95);
+}
