@@ -66,3 +66,17 @@ div.tooltip {
 circle {
     fill: rgba(77, 96, 133, 0.95);
 }
+
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.85;
+}
+
+.grid line {
+  stroke: lightgrey;
+  stroke-opacity: 0.85;
+  shape-rendering: crispEdges
+}
+.grid path {
+  stroke-width: 0.2;
+}
