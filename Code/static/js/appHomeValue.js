@@ -137,14 +137,14 @@ var valueline2 = basicy()
     .y(function (d) {
         return y(d.medianHomePriceUS);
     });
-var div = d3.select("body").append("div")
+var div = d3.select("#chart1").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
 // append the svg obgect to the body of the page
 // appends a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#chart1").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")

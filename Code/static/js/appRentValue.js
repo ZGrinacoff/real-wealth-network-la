@@ -133,22 +133,22 @@ function basicy() {
         })
     return ret;
 }
-var valueline = basicy()
+var valueRentline = basicy()
     .y(function (d) {
         return y(d.medianRentalPriceLA);
     });
-var valueline2 = basicy()
+var valueRentline2 = basicy()
     .y(function (d) {
         return y(d.medianRentalPriceUS);
     });
-var div = d3.select("body").append("div")
+var div2 = d3.select("#chart2").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
 // append the svg obgect to the body of the page
 // appends a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
-var svg = d3.select("body").append("svg")
+var svg2 = d3.select("#chart2").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -199,38 +199,38 @@ d3.csv("../data/home_rentalPrice.csv", function (error, data) {
         "y": 50,
         "class": "line-text",
         "class2": "line",
-        "dataline": valueline
+        "dataline": valueRentline
     }, {
         "name": "US Median Rental Price",
         "x": 100,
         "y": 70,
         "class": "line2-text",
         "class2": "line2",
-        "dataline": valueline2
+        "dataline": valueRentline2
     }]
     for (var i = 0; i < dataArray.length; i++) {
-        svg.append("text").text(dataArray[i].name)
+        svg2.append("text").text(dataArray[i].name)
             .attr("x", dataArray[i].x)
             .attr("y", dataArray[i].y);
-        svg.append("rect")
+        svg2.append("rect")
             .attr("x", dataArray[i].x - 70)
             .attr("y", dataArray[i].y - 11)
             .attr("width", 50)
             .attr('height', 10)
             .attr('class', dataArray[i].class)
-        svg.append("path")
+        svg2.append("path")
             .data([data])
             .attr("class", dataArray[i].class2)
             .attr("d", dataArray[i].dataline) 
     }
 
     // add the dots with tooltips
-    var fixeddot = svg.selectAll("dot")
+    var fixeddot = svg2.selectAll("dot")
         .data(data)
         .enter().append("circle")
         .attr("r", 4)
         .style("opacity", .5)
-    var fixeddot2 = svg.selectAll("dot")
+    var fixeddot2 = svg2.selectAll("dot")
         .data(data)
         .enter().append("circle")
         .attr("r", 4)
@@ -243,15 +243,15 @@ d3.csv("../data/home_rentalPrice.csv", function (error, data) {
             return y(d.medianRentalPriceLA);
         })
         .on("mouseover", function (d) {
-            div.transition()
+            div2.transition()
                 .duration(200)
                 .style("opacity", .75);
-            div.html("<p>Date: " + d.date + "</p><hr><p>Median Rental Price: $" + d.medianRentalPriceLA + "</p>")
+            div2.html("<p>Date: " + d.date + "</p><hr><p>Median Rental Price: $" + d.medianRentalPriceLA + "</p>")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY + 20) + "px");
         })
         .on('mouseout', function() {
-            div.transition()
+            div2.transition()
               .delay(100)
               .duration(600)
               .style("opacity",0)
@@ -265,15 +265,15 @@ d3.csv("../data/home_rentalPrice.csv", function (error, data) {
             return y(d.medianRentalPriceUS);
         })
         .on("mouseover", function (d) {
-            div.transition()
+            div2.transition()
                 .duration(200)
                 .style("opacity", .75);
-            div.html("<p>Date: " + d.date + "</p><hr><p>Median Rental Price: $" + d.medianRentalPriceUS + "</p>")
+            div2.html("<p>Date: " + d.date + "</p><hr><p>Median Rental Price: $" + d.medianRentalPriceUS + "</p>")
                 .style("left", (d3.event.pageX) + "px")
                 .style("top", (d3.event.pageY + 20) + "px");
         })
         .on('mouseout', function() {
-            div.transition()
+            div2.transition()
               .delay(100)
               .duration(600)
               .style("opacity",0)
@@ -281,18 +281,18 @@ d3.csv("../data/home_rentalPrice.csv", function (error, data) {
             });
 
     // add the X Axis
-    svg.append("g")
+    svg2.append("g")
         .attr("transform", "translate(0," + height + ")")
         .classed("axis", true)
         .call(d3.axisBottom(x));
 
     // add the Y Axis
-    svg.append("g")
+    svg2.append("g")
         .classed("axis", true)
         .call(d3.axisLeft(y));
 
     // Add x axis grid lines.
-    svg.append("g")         
+    svg2.append("g")         
         .attr("class", "grid")
         .attr("transform", "translate(0," + height + ")")
         .style("stroke-dasharray",("3,3"))
@@ -302,7 +302,7 @@ d3.csv("../data/home_rentalPrice.csv", function (error, data) {
         )
 
     // Add y axis gridlines.
-    svg.append("g")         
+    svg2.append("g")         
         .attr("class", "grid")
         .style("stroke-dasharray",("3,3"))
         .call(make_y_axis()
