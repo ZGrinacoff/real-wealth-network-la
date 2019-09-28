@@ -155,6 +155,16 @@ var svg = d3.select("body").append("svg")
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
+function make_x_axis() {        
+    return d3.axisBottom(x)
+        .ticks(11)
+}
+
+function make_y_axis() {        
+    return d3.axisLeft(y)
+        .ticks(11)
+}
+
 var parseTime = d3.timeParse("%Y-%m");
 
 // Get the data
@@ -280,5 +290,24 @@ d3.csv("../data/home_rentalPrice.csv", function (error, data) {
     svg.append("g")
         .classed("axis", true)
         .call(d3.axisLeft(y));
+
+    // Add x axis grid lines.
+    svg.append("g")         
+        .attr("class", "grid")
+        .attr("transform", "translate(0," + height + ")")
+        .style("stroke-dasharray",("3,3"))
+        .call(make_x_axis()
+            .tickSize(-height, 0, 0)
+            .tickFormat("")
+        )
+
+    // Add y axis gridlines.
+    svg.append("g")         
+        .attr("class", "grid")
+        .style("stroke-dasharray",("3,3"))
+        .call(make_y_axis()
+            .tickSize(-width, 0, 0)
+            .tickFormat("")
+        )
 
 });
