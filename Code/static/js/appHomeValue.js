@@ -114,7 +114,7 @@ var margin = {
     bottom: 30,
     left: 60
 },
-width = 1500 - margin.left - margin.right,
+width = 1600 - margin.left - margin.right,
 height = 500 - margin.top - margin.bottom;
 
 // set the ranges
@@ -244,7 +244,7 @@ d3.csv("../../data/home_rentalPrice.csv", function (error, data) {
                 .style("opacity", .75);
             div.html("<p>Date: " + d.date + "</p><hr><p>Median Home Value: $" + d.medianHomePriceLA + "</p>")
                 .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY + 20) + "px");
+                .style("top", (d3.event.pageY - 700) + "px");
         })
         .on('mouseout', function() {
             div.transition()
@@ -266,7 +266,7 @@ d3.csv("../../data/home_rentalPrice.csv", function (error, data) {
                 .style("opacity", .75);
             div.html("<p>Date: " + d.date + "</p><hr><p>Median Home Value: $" + d.medianHomePriceUS + "</p>")
                 .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY + 20) + "px");
+                .style("top", (d3.event.pageY - 700) + "px");
         })
         .on('mouseout', function() {
             div.transition()

@@ -118,7 +118,7 @@ var margin = {
     bottom: 30,
     left: 60
 },
-width = 1500 - margin.left - margin.right,
+width = 1600 - margin.left - margin.right,
 height = 500 - margin.top - margin.bottom;
 
 // set the ranges
@@ -141,7 +141,7 @@ var valueRentline2 = basicy()
     .y(function (d) {
         return y(d.medianRentalPriceUS);
     });
-var div2 = d3.select("#chart2").append("div")
+var div = d3.select("#chart2").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
@@ -243,15 +243,15 @@ d3.csv("../../data/home_rentalPrice.csv", function (error, data) {
             return y(d.medianRentalPriceLA);
         })
         .on("mouseover", function (d) {
-            div2.transition()
+            div.transition()
                 .duration(200)
                 .style("opacity", .75);
-            div2.html("<p>Date: " + d.date + "</p><hr><p>Median Rental Price: $" + d.medianRentalPriceLA + "</p>")
+            div.html("<p>Date: " + d.date + "</p><hr><p>Median Rental Price: $" + d.medianRentalPriceLA + "</p>")
                 .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY + 20) + "px");
+                .style("top", (d3.event.pageY - 700) + "px");
         })
         .on('mouseout', function() {
-            div2.transition()
+            div.transition()
               .delay(100)
               .duration(600)
               .style("opacity",0)
@@ -265,15 +265,15 @@ d3.csv("../../data/home_rentalPrice.csv", function (error, data) {
             return y(d.medianRentalPriceUS);
         })
         .on("mouseover", function (d) {
-            div2.transition()
+            div.transition()
                 .duration(200)
                 .style("opacity", .75);
-            div2.html("<p>Date: " + d.date + "</p><hr><p>Median Rental Price: $" + d.medianRentalPriceUS + "</p>")
+            div.html("<p>Date: " + d.date + "</p><hr><p>Median Rental Price: $" + d.medianRentalPriceUS + "</p>")
                 .style("left", (d3.event.pageX) + "px")
-                .style("top", (d3.event.pageY + 20) + "px");
+                .style("top", (d3.event.pageY - 700) + "px");
         })
         .on('mouseout', function() {
-            div2.transition()
+            div.transition()
               .delay(100)
               .duration(600)
               .style("opacity",0)
