@@ -134,12 +134,6 @@ var y = d3.scaleBand()
 
 var x = d3.scaleLinear()
           .range([0, width]);
-
-// Initialize Tooltip
-var toolTip = d3.select("#chart1")
-  .append("div")
-  .attr("class", "toolTip");
-  // .html(function(d) {(`<strong>${d.year}<strong><hr>${d.region}<br>Median Income: $${d.medianIncome}`)});
           
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
@@ -150,6 +144,11 @@ var svg = d3.select("#chart1").append("svg")
 var chartGroup = svg.append("g")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
+
+// Initialize Tooltip
+var toolTip = d3.select("#chart1")
+  .append("g")
+  .attr("class", "toolTip");
 
 // Load data from "medianIncome.csv".
 d3.csv("../../data/medianIncome.csv", function(error, incomeData) {
@@ -173,28 +172,30 @@ d3.csv("../../data/medianIncome.csv", function(error, incomeData) {
     .enter().append("rect")
     .filter(d => d.year == 2017)
       .attr("class", "bar")
-      //.attr("x", function(d) { return x(d.sales); })
       .attr("width", function(d) {return x(d.medianIncome); } )
       .attr("y", function(d) { return y(d.region); })
       .attr("height", y.bandwidth())
         .on("mouseover", function(d){
-            toolTip
-            .style("left", d3.event.pageX - 50 + "px")
-            .style("top", d3.event.pageY - 70 + "px")
+          toolTip
             .style("display", "inline-block")
-            .html(`<strong>${d.year}<strong><hr>${d.region}<br>Median Income: $${d.medianIncome}`);
+            .html(`<strong>${d.year}<strong><hr>${d.region}<br>Median Income: $${d.medianIncome}`)
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY + 70) + "px");
         })
         // .on("mouseout", function(d){ toolTip.hide(d);});
-        .on("mouseout", function(){return toolTip.style("display", "none");});
+        .on("mouseout", function(d){return toolTip.style("display", "none");});
 
   // add the x Axis
   chartGroup.append("g")
       .attr("transform", "translate(0," + height + ")")
+      // .style("fill", "white")
+      // .style("font-color", "white")
       .style("font-size", "15px")
       .call(d3.axisBottom(x));
 
   // add the y Axis
   chartGroup.append("g")
+  // .style("fill", "white")
   .style("font-size", "15px")
       .call(d3.axisLeft(y));
 
