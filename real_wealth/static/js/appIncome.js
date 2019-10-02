@@ -122,81 +122,117 @@
 // // When the browser window is resized, makeResponsive() is called.
 // d3.select(window).on("resize", makeResponsive);
 
-// set the dimensions and margins of the graph
-var margin = {top: 100, right: 100, bottom: 100, left: 140},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+// // set the dimensions and margins of the graph
+// var margin = {top: 100, right: 100, bottom: 100, left: 140},
+//     width = 960 - margin.left - margin.right,
+//     height = 500 - margin.top - margin.bottom;
 
-// set the ranges
-var y = d3.scaleBand()
-          .range([height, 0])
-          .padding(0.1);
+// // set the ranges
+// var y = d3.scaleBand()
+//           .range([height, 0])
+//           .padding(0.1);
 
-var x = d3.scaleLinear()
-          .range([0, width]);
+// var x = d3.scaleLinear()
+//           .range([0, width]);
           
-// append the svg object to the body of the page
-// append a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
-var svg = d3.select("#chart1").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-var chartGroup = svg.append("g")
-    .attr("transform", 
-          "translate(" + margin.left + "," + margin.top + ")");
+// // append the svg object to the body of the page
+// // append a 'group' element to 'svg'
+// // moves the 'group' element to the top left margin
+// var svg = d3.select("#chart1").append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom)
+// var chartGroup = svg.append("g")
+//     .attr("transform", 
+//           "translate(" + margin.left + "," + margin.top + ")");
 
-// Initialize Tooltip
-var toolTip = d3.select("#chart1")
-  .append("g")
-  .attr("class", "toolTip");
+// // Initialize Tooltip
+// var toolTip = d3.select("#chart1")
+//   .append("g")
+//   .attr("class", "toolTip");
 
-// Load data from "medianIncome.csv".
-d3.csv("../../data/medianIncome.csv", function(error, incomeData) {
-    if (error) throw error;
+// // Load data from "medianIncome.csv".
+// d3.csv("../../data/medianIncome.csv", function(error, incomeData) {
+//     if (error) throw error;
     
-    console.log(incomeData);
+//     console.log(incomeData);
 
-  // format the data
-  incomeData.forEach(function(d) {
-    d.medianIncome = +d.medianIncome;
-  });
+//   // format the data
+//   incomeData.forEach(function(d) {
+//     d.medianIncome = +d.medianIncome;
+//   });
 
-  // Scale the range of the data in the domains
-  x.domain([0, d3.max(incomeData, function(d){ return d.medianIncome; })])
-  y.domain(incomeData.map(function(d) { return d.region; }));
-  //y.domain([0, d3.max(data, function(d) { return d.sales; })]);
+//   // Scale the range of the data in the domains
+//   x.domain([0, d3.max(incomeData, function(d){ return d.medianIncome; })])
+//   y.domain(incomeData.map(function(d) { return d.region; }));
+//   //y.domain([0, d3.max(data, function(d) { return d.sales; })]);
 
-  // append the rectangles for the bar chart
-  chartGroup.selectAll(".bar")
-      .data(incomeData)
-    .enter().append("rect")
-    .filter(d => d.year == 2017)
-      .attr("class", "bar")
-      .attr("width", function(d) {return x(d.medianIncome); } )
-      .attr("y", function(d) { return y(d.region); })
-      .attr("height", y.bandwidth())
-        .on("mouseover", function(d){
-          toolTip
-            .style("display", "inline-block")
-            .html(`<strong>${d.year}<strong><hr>${d.region}<br>Median Income: $${d.medianIncome}`)
-            .style("left", (d3.event.pageX) + "px")
-            .style("top", (d3.event.pageY + 70) + "px");
-        })
-        // .on("mouseout", function(d){ toolTip.hide(d);});
-        .on("mouseout", function(d){return toolTip.style("display", "none");});
+//   // append the rectangles for the bar chart
+//   chartGroup.selectAll(".bar")
+//       .data(incomeData)
+//     .enter().append("rect")
+//     .filter(d => d.year == 2017)
+//       .attr("class", "bar")
+//       .attr("width", function(d) {return x(d.medianIncome); } )
+//       .attr("y", function(d) { return y(d.region); })
+//       .attr("height", y.bandwidth())
+//         .on("mouseover", function(d){
+//           toolTip
+//             .style("display", "inline-block")
+//             .html(`<strong>${d.year}<strong><hr>${d.region}<br>Median Income: $${d.medianIncome}`)
+//             .style("left", (d3.event.pageX) + "px")
+//             .style("top", (d3.event.pageY + 70) + "px");
+//         })
+//         // .on("mouseout", function(d){ toolTip.hide(d);});
+//         .on("mouseout", function(d){return toolTip.style("display", "none");});
 
-  // add the x Axis
-  chartGroup.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      // .style("fill", "white")
-      // .style("font-color", "white")
-      .style("font-size", "15px")
-      .call(d3.axisBottom(x));
+//   // add the x Axis
+//   chartGroup.append("g")
+//       .attr("transform", "translate(0," + height + ")")
+//       // .style("fill", "white")
+//       // .style("font-color", "white")
+//       .style("font-size", "15px")
+//       .call(d3.axisBottom(x));
 
-  // add the y Axis
-  chartGroup.append("g")
-  // .style("fill", "white")
-  .style("font-size", "15px")
-      .call(d3.axisLeft(y));
+//   // add the y Axis
+//   chartGroup.append("g")
+//   // .style("fill", "white")
+//   .style("font-size", "15px")
+//       .call(d3.axisLeft(y));
 
-});
+// });
+
+d3.json("/income").then((data) => {
+  data = data.slice(0, 3)
+  // console.log(data);
+
+  var trace5 = {
+    x: data.map(row => row.medianincome),
+    y: data.map(row => row.region),
+    text: data.map(row => row.region),
+    name: "Median Income",
+    type: "bar",
+    orientation: "h",
+    marker:{
+      color: ['blue', 'orange', 'red']
+    }
+  };
+
+  var layout3 = {
+    title: "Median Income by Region: 2017",
+    margin: {
+      l: 250,
+      r: 100,
+      t: 100,
+      b: 100
+    },
+    xaxis: {title: "Median Income ($ in thousands)"},
+    yaxis: {title: "Region"},
+    width: 1650
+  };
+  
+
+  var incometrace = [trace5]
+
+  Plotly.newPlot('chart3', incometrace, layout3)
+  
+})

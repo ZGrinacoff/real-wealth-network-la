@@ -60,6 +60,10 @@ hrplabels = ['id', 'date', 'regionla', 'medianhomepricela', 'medianRentalPriceLA
 hrpdf = pd.DataFrame.from_records(home_rentalprice, columns=hrplabels)
 homerentalpriceData = hrpdf.to_dict('records')
 
+incomelabels = ['id','years', 'region', 'medianincome']
+incomedf = pd.DataFrame.from_records(medianincome, columns=incomelabels)
+incomeData = incomedf.to_dict('records')
+
 realwealthdict = {"population":population, "employment":employment, "monthlylistings":monthlylistings, "medianincome": medianincome,"home_rentalprice":home_rentalprice}
 
 # homerentalpriceData = {"home_rentalprice": id, date, regionla, medianhomepricela, medianRentalPriceLA, regionus, medianhomepriceus, medianRentalPriceUS}
