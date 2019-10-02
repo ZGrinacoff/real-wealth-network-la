@@ -165,16 +165,19 @@ var parseTime = d3.timeParse("%Y-%m");
 
 // Get the data
 var datalist = [];
-d3.json("/data").then((data) => {
+d3.json("/housing_trends").then((data) => {
     // if (error) throw error;
 
     // data = data.filter(function(row) {
     //     return row["date"] >= "2000-01"
     // })
 
-    var h_r_prices = data.home_rentalprice;
-
-    console.log(h_r_prices)
+    var hrPrices = data;
+    console.log(hrPrices)
+    // hrPrices.forEach(element => {
+    //     console.log(element.date)
+    // });
+    // console.log(hrPrices[0].date)
     
     // console.log(h_r_prices)
 

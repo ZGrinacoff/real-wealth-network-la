@@ -1,3 +1,4 @@
+import pandas as pd
 import sqlalchemy
 from sqlalchemy import create_engine
 from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
@@ -55,8 +56,12 @@ monthlylistings = [list(el) for el in monthlylistings]
 home_rentalprice = [list(el) for el in home_rentalprice]
 medianincome = [list(el) for el in medianincome]
 
+hrplabels = ['id', 'date', 'regionla', 'medianhomepricela', 'medianRentalPriceLA', 'regionus', 'medianhomepriceus', 'medianRentalPriceUS']
+hrpdf = pd.DataFrame.from_records(home_rentalprice, columns=hrplabels)
+homerentalpriceData = hrpdf.to_dict('records')
+
 realwealthdict = {"population":population, "employment":employment, "monthlylistings":monthlylistings, "medianincome": medianincome,"home_rentalprice":home_rentalprice}
 
-    
+# homerentalpriceData = {"home_rentalprice": id, date, regionla, medianhomepricela, medianRentalPriceLA, regionus, medianhomepriceus, medianRentalPriceUS}
     
     
