@@ -217,6 +217,32 @@ d3.json("/income").then((data) => {
     }
   };
 
+  d3.json("/income").then((data) => {
+        data = data.slice(0, 3)
+        
+        let medianincomeLA = [];
+        let dates = [];
+        data.forEach(i => {
+            
+            medianincomeLA.push(i.medianincome)
+            
+            dates.push(i.date)
+        });
+  function median(numbers) {
+    const sorted = numbers.slice().sort((a, b) => a - b);
+    const middle = Math.floor(sorted.length / 2);
+
+    if (sorted.length % 2 === 0) {
+        return (sorted[middle - 1] + sorted[middle]) / 2;
+    }
+
+    return sorted[middle];
+}
+
+MedIncomeLa=median(medianincomeLA);
+// console.log(MedIncomeLa)
+document.getElementById("insertMeIn").innerHTML = MedIncomeLa;
+
   var layout3 = {
     title: "Median Income by Region: 2017",
     margin: {
@@ -235,4 +261,5 @@ d3.json("/income").then((data) => {
 
   Plotly.newPlot('chart3', incometrace, layout3)
   
+})
 })
