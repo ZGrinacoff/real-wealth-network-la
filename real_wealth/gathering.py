@@ -66,6 +66,7 @@ incomeData = incomedf.to_dict('records')
 
 poplabels = ['id', 'years', 'population', 'growth', 'growth_rate']
 popdf = pd.DataFrame.from_records(population, columns=poplabels)
+popdf = popdf.dropna()
 populationData = popdf.to_dict('records')
 
 emplabels = ['id', 'years', 'periods', 'area', 'adjusted', 'preliminary', 'labor_force', 'employment', 'unemployment', 'unemployment_rate']
