@@ -5,7 +5,7 @@ from flask import (
     render_template,
     jsonify,
     request)
-from gathering import (realwealthdict, homerentalpriceData, incomeData)
+from gathering import (realwealthdict, homerentalpriceData, incomeData, populationData, employmentData, listingsData)
 app = Flask(__name__)
 
 @app.route("/data")
@@ -24,6 +24,18 @@ def housing_trends():
 @app.route("/income")
 def income():
     return jsonify(incomeData)
+
+@app.route("/population")
+def population():
+    return jsonify(populationData)
+
+@app.route("/employment")
+def employment():
+    return jsonify(employmentData)
+
+@app.route("/listings")
+def listings():
+    return jsonify(listingsData)
 
 if __name__ == "__main__":
     app.run(debug=True)

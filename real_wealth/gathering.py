@@ -64,6 +64,18 @@ incomelabels = ['id','years', 'region', 'medianincome']
 incomedf = pd.DataFrame.from_records(medianincome, columns=incomelabels)
 incomeData = incomedf.to_dict('records')
 
+poplabels = ['id', 'years', 'population', 'growth', 'growth_rate']
+popdf = pd.DataFrame.from_records(population, columns=poplabels)
+populationData = popdf.to_dict('records')
+
+emplabels = ['id', 'years', 'periods', 'area', 'adjusted', 'preliminary', 'labor_force', 'employment', 'unemployment', 'unemployment_rate']
+empdf = pd.DataFrame.from_records(employment, columns=emplabels)
+employmentData = empdf.to_dict('records')
+
+listingslabels = ['id', 'sizerank', 'regionid', 'regionname', 'regiontype', 'statename', 'date', 'totallistings']
+listingsdf = pd.DataFrame.from_records(monthlylistings, columns=listingslabels)
+listingsData = listingsdf.to_dict('records')
+
 realwealthdict = {"population":population, "employment":employment, "monthlylistings":monthlylistings, "medianincome": medianincome,"home_rentalprice":home_rentalprice}
 
 # homerentalpriceData = {"home_rentalprice": id, date, regionla, medianhomepricela, medianRentalPriceLA, regionus, medianhomepriceus, medianRentalPriceUS}
