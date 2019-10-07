@@ -4,3 +4,29 @@
 * We appreciate any feedback at this time and look forward to your comments!
 
 ## Documentation and Navigation:
+* real-wealth-network-la (Home Directory)
+    * DATA AND ETL FOR MAP ---> All Data for Map Application
+    * MAP ---> HTML/CSS and Javascript for Jackson Map
+    
+* real_wealth (Folder for Main Application)
+    * gathering.py ---> SQLLite Database Creation from 5 total CSV Files
+    * app.py ---> Flask/SQLAlchemy Application that launches web app on local hostonce gathering.py file has been executed.
+    * templates (Folder)
+        * index.html ---> Main HTML Dashboard
+    * data (Folder)
+        * 5 Total CSV Files (Original Data Sources)
+            * employment.csv
+            * home_rentalPrice.csv
+            * medianIncome.csv
+            * monthlyListings.csv
+            * population.csv
+    * static (Folder)
+        * css (Folder)
+            * style.css ---> Stylesheet for index.html
+        * js (Folder)
+            * appHomeValue.js ---> Builds Plotly.js chart for LA COunty vs US Median Home Value. Also inputs data directly into index.html summary.
+            * appRentValue.js ---> Builds Plotly.js chart for LA County vs US Median Rent Price. Also inputs data directly into index.html summary.
+            * appIncome.js ---> Builds Plotly.js chart for LA County vs US vs California State 2017 Median Income Levels. Also inputs data directly into index.html.
+            * population.js ---> Inputs Population data directly into index.html.
+        * images (Folder)
+            * LOGO.JPg ---> Real Wealth Network of LA Logo.
